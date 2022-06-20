@@ -134,7 +134,7 @@ func (r *Reader) Reader_ReadBit() byte {
 
 func (r *Reader) Reader_PeekBit() bool {
 	if len(r.buffer) == 0 {
-		r.Reader_ReadBit()
+		r.readByte()
 	}
 
 	return len(r.buffer) != 0 && r.IsReading

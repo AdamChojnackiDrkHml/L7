@@ -31,6 +31,7 @@ func noise(inName, outName string, p float64) int {
 	fmt.Println(r.ReadWholeFileGetSizeAndResetReader())
 	counter := 0
 	rand.Seed(time.Now().UnixNano())
+	iter := 0
 	for r.Reader_PeekBit() {
 
 		b := r.Reader_ReadBit()
@@ -40,8 +41,9 @@ func noise(inName, outName string, p float64) int {
 		} else {
 			w.Writer_addBits([]uint8{b})
 		}
-
+		iter++
 	}
+	fmt.Println(iter)
 	w.Writer_Flush()
 	w.CloseFile()
 
